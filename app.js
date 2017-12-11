@@ -25,6 +25,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var expresshandlebars = require('express-handlebars');
 
+
 var routes = require('./routes');
 
 var app = express();
@@ -44,12 +45,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
+
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -65,5 +68,9 @@ app.use(function(err, req, res, next) {
     res.render('error', data);
   }
 });
+
+
+
+
 
 module.exports = app;

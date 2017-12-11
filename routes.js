@@ -41,8 +41,21 @@ router.get('/', function(req, res, next) {
   });
 });
 
-router.get('/create', function(req, res, next) {
+
+
+//adres
+router.get('/adres', function(req, res, next) {
+  res.render('adres');
+});
+
+
+//
+router.get('/duration', function(req, res, next) {
   res.render('upsert');
+});
+
+router.get('/binding', function(req, res, next) {
+    res.render('binding');
 });
 
 router.get('/edit/:id', function(req, res, next) {
@@ -81,7 +94,7 @@ router.post('/upsert', function(req, res, next) {
 });
 
 // Route for creating spreadsheet.
-
+/*
 var SheetsHelper = require('./sheets');
 
 router.post('/spreadsheets', function(req, res, next) {
@@ -108,7 +121,7 @@ router.post('/spreadsheets', function(req, res, next) {
 });
 
 // Route for syncing spreadsheet.
-
+/*
 router.post('/spreadsheets/:id/sync', function(req, res, next) {
   var auth = req.get('Authorization');
   if (!auth) {
@@ -130,5 +143,5 @@ router.post('/spreadsheets/:id/sync', function(req, res, next) {
     });
   });
 });
-
+*/
 module.exports = router;

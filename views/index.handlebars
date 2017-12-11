@@ -17,9 +17,50 @@
   the License.
 -->
 
+
+
+<div class="mdl-grid">
+  <section id="menu" class="mdl-cell mdl-cell--8-col relative">
+    
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" href="/adres">
+  <i class="large material-icons md-48">location_city</i>
+</a>
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored"  id="show-dialog-call">
+  <i class="material-icons md-48">call</i>
+</a>
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+  <i class="material-icons md-48">info</i>
+</a>
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+  <i class="material-icons md-48">credit_card</i>
+</a>
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored" id="show-dialog-wait">
+  <i class="material-icons md-48">access_time</i>
+</a>
+<a class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+  <i class="material-icons md-48">rate_review</i>
+</a>
+</section>
+</div>
+
+
+  <!--
 <div class="mdl-grid">
   <section id="orders" class="mdl-cell mdl-cell--8-col relative">
     <div class="mdl-grid">
+       <a class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect
+                 mdl-button--colored mdl-shadow--4dp mdl-color--accent"
+          href="/create">
+        <i class="material-icons" role="presentation">add</i>
+        <span class="visuallyhidden">testing</span>
+      </a>
+     <a class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect
+                 mdl-button--colored mdl-shadow--4dp mdl-color--accent"
+          href="/edit">
+        <i class="material-icons" role="presentation">add</i>
+        <span class="visuallyhidden">Add</span>
+      </a>
+
       {{#each orders}}
       <div class="mdl-cell mdl-cell--6-col mdl-card mdl-shadow--2dp">
         <div class="mdl-card__title">
@@ -52,9 +93,10 @@
     </div>
   </section>
 
-  <!-- Show spreadsheets -->
+  <!-- Show spreadsheets 
   <section id="spreadsheets"
            class="mdl-cell mdl-cell--4-col relative">
+           
     <div class="mdl-list">
       <div class="mdl-list__item">
         <span class="mdl-list__item-primary-content mdl-layout-title">
@@ -78,6 +120,62 @@
         </span>
       </div>
       {{/each}}
-    </div>
+    </div>       
   </section>
+  -->
+  <dialog id="calldialog" class="mdl-dialog">
+    <h4 class="mdl-dialog__title mdl-dialog__title--4col" >Call company?</h4>
+    <div class="mdl-dialog__content">
+      <p>
+       This will call the the number: +0168382702.
+      </p>
+    </div>
+    <div class="mdl-dialog__actions">
+      <a type="button" class="mdl-button call" href="tel: +31653531244">Agree</a>
+      <button type="button" class="mdl-button close">Disagree</button>
+    </div>
+  </dialog>
+
+   <dialog id="waitdialog" class="mdl-dialog">
+    <h4 class="mdl-dialog__title mdl-dialog__title--4col" >Time left:</h4>
+    <div class="mdl-dialog__content">
+      <p>
+The current wait time is 10 minutes</p>
+    </div>
+    <div class="mdl-dialog__actions">
+     
+      <button type="button" class="mdl-button oke">Oke</button>
+    </div>
+  </dialog>
+
+
+  <script>
+
+    var callDialog = document.getElementById('calldialog');
+    var waitDialog = document.getElementById('waitdialog');
+    var showCallDialogButton = document.querySelector('#show-dialog-call');
+     var showWaitDialogButton = document.querySelector('#show-dialog-wait');
+    if (!callDialog.showModal) {
+      dialogPolyfill.registerDialog(callDialog);
+    }
+    if (!waitDialog.showModal) {
+      dialogPolyfill.registerDialog(waitDialog);
+    }
+
+    showCallDialogButton.addEventListener('click', function() {
+      callDialog.showModal();
+    });
+    callDialog.querySelector('.close').addEventListener('click', function() {
+      callDialog.close();
+    });
+    callDialog.querySelector('.call').addEventListener('click', function() {
+      callDialog.close();
+    });
+    showWaitDialogButton.addEventListener('click', function() {
+      waitDialog.showModal();
+    });
+    waitDialog.querySelector('.oke').addEventListener('click', function() {
+      waitDialog.close();
+    });
+  </script>
 </div>

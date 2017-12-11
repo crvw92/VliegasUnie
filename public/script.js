@@ -16,7 +16,7 @@
   License for the specific language governing permissions and limitations under
   the License.
 */
-
+navigator.serviceWorker.register('/service-worker.js');
 // Bind handlers when the page loads.
 $(function() {
   $('a.mdl-button').click(function() {
@@ -72,6 +72,7 @@ $(function() {
       showMessage('Sync complete.')
     });
   });
+
 });
 
 function makeRequest(method, url, callback) {
